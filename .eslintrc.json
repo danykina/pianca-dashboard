@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "extends": [
+    "react-app",
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:functional/external-recommended",
+    "plugin:functional/lite",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["functional", "prettier", "unused-imports"]
+}
