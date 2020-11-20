@@ -4,18 +4,29 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import loadable from '@loadable/component';
 
-const Home = loadable(() => import('../../Home/Home'));
+import NavigationLayout from '../../../components/layouts/SidebarLayout/NavigationLayout';
+
+import SidebarMenu from '../../../components/menus/SidebarMenu/SidebarMenu';
+
+const Dashboard = loadable(() => import('../../Dashboard/Dashboard'));
+const Webcams = loadable(() => import('../../Webcams/Webcams'));
 
 const Router: FunctionComponent = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/home">
-          <Home />
-        </Route>
+      <NavigationLayout navigationMenu={<SidebarMenu />}>
+        <Switch>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
 
-        <Redirect to="/home" />
-      </Switch>
+          <Route path="/webcams">
+            <Webcams />
+          </Route>
+
+          <Redirect to="/home" />
+        </Switch>
+      </NavigationLayout>
     </BrowserRouter>
   );
 };
