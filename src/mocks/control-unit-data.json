@@ -1,0 +1,68 @@
+[
+  {
+    "id": "603765960",
+    "portale_stazione_id": "99",
+    "drupal_stazione_id": "37877",
+    "tipo_dato_id": "TEMPERATURE",
+    "max_date": "2020-11-24 20:30:00",
+    "valore": "-1.9",
+    "tipo_sensore": "Temperatura",
+    "unita_misura": "\u00b0C",
+    "titolo": "H4 - Piancavallo"
+  },
+  {
+    "id": "603764550",
+    "portale_stazione_id": "99",
+    "drupal_stazione_id": "37877",
+    "tipo_dato_id": "SOLAR_RADIATION",
+    "max_date": "2020-11-24 20:30:00",
+    "valore": "0",
+    "tipo_sensore": "Radiazione solare",
+    "unita_misura": "W/mq",
+    "titolo": "H4 - Piancavallo"
+  },
+  {
+    "id": "603763629",
+    "portale_stazione_id": "99",
+    "drupal_stazione_id": "37877",
+    "tipo_dato_id": "SNOW_HEIGHT",
+    "max_date": "2020-11-24 20:30:00",
+    "valore": "0",
+    "tipo_sensore": "Altezza della neve",
+    "unita_misura": "cm",
+    "titolo": "H4 - Piancavallo"
+  },
+  {
+    "id": "603763365",
+    "portale_stazione_id": "99",
+    "drupal_stazione_id": "37877",
+    "tipo_dato_id": "PRESSURE",
+    "max_date": "2020-11-24 20:30:00",
+    "valore": "877",
+    "tipo_sensore": "Pressione",
+    "unita_misura": "hPa",
+    "titolo": "H4 - Piancavallo"
+  },
+  {
+    "id": "603762438",
+    "portale_stazione_id": "99",
+    "drupal_stazione_id": "37877",
+    "tipo_dato_id": "PRECIPITATION",
+    "max_date": "2020-11-24 20:30:00",
+    "valore": "0",
+    "tipo_sensore": "Pioggia",
+    "unita_misura": "mm",
+    "titolo": "H4 - Piancavallo"
+  },
+  {
+    "id": "603760802",
+    "portale_stazione_id": "99",
+    "drupal_stazione_id": "37877",
+    "tipo_dato_id": "HUMIDITY",
+    "max_date": "2020-11-24 20:30:00",
+    "valore": "73",
+    "tipo_sensore": "Umidit\u00e0",
+    "unita_misura": "%",
+    "titolo": "H4 - Piancavallo"
+  }
+]
