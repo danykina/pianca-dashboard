@@ -1,0 +1,34 @@
+[
+  {
+    "drupal_stazione_id": "35853",
+    "portale_stazione_id": "699",
+    "latitude": "46.11333",
+    "longitude": "12.52194",
+    "titolo": "PCIV - Piancavallo",
+    "status": "1"
+  },
+  {
+    "drupal_stazione_id": "35632",
+    "portale_stazione_id": "920",
+    "latitude": "46.11528",
+    "longitude": "12.49167",
+    "titolo": "PCIV - Val dei Sass",
+    "status": "1"
+  },
+  {
+    "drupal_stazione_id": "35631",
+    "portale_stazione_id": "921",
+    "latitude": "46.11806",
+    "longitude": "12.50611",
+    "titolo": "PCIV - Val Sughet",
+    "status": "1"
+  },
+  {
+    "drupal_stazione_id": "37877",
+    "portale_stazione_id": "99",
+    "latitude": "46.1095",
+    "longitude": "12.5218",
+    "titolo": "H4 - Piancavallo",
+    "status": "1"
+  }
+]
