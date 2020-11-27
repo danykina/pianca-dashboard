@@ -8,14 +8,36 @@ import { useQuery } from 'react-query';
 import BaseLayout from '../../components/layouts/BaseLayout/BaseLayout';
 import DetectionsTable from '../../components/tables/DetectionsTable/DetectionsTable';
 
-import controlUnitData from '../../mocks/control-unit-data.json';
+const { REACT_APP_API_BASE_URL } = process.env;
 
 const Dashboard: FunctionComponent = () => {
-  const { data } = useQuery('retrieveDetections', () =>
-    axios.get('http://localhost:3000/api/retrieveDetections'),
+  const { data: piancavalloData } = useQuery(
+    'retrievePiancavalloDetections',
+    () =>
+      axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+        params: { controlUnitId: 99 },
+      }),
   );
 
-  console.log('data', data);
+  const { data: roncjadeData } = useQuery('retrieveRoncjadeDetections', () =>
+    axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+      params: { controlUnitId: 699 },
+    }),
+  );
+
+  const { data: valSughetData } = useQuery('retrieveValSughetDetections', () =>
+    axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+      params: { controlUnitId: 921 },
+    }),
+  );
+
+  const { data: valDeiSassData } = useQuery(
+    'retrieveValDeiSassDetections',
+    () =>
+      axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+        params: { controlUnitId: 920 },
+      }),
+  );
 
   return (
     <BaseLayout>
@@ -27,7 +49,7 @@ const Dashboard: FunctionComponent = () => {
                 H4 - Piancavallo
               </Typography>
 
-              <DetectionsTable value={controlUnitData} />
+              <DetectionsTable value={piancavalloData?.data} />
             </CardContent>
           </Card>
         </Grid>
@@ -36,10 +58,10 @@ const Dashboard: FunctionComponent = () => {
           <Card>
             <CardContent>
               <Typography variant="h5" align="center" gutterBottom>
-                H4 - Piancavallo
+                PCIV - Piancavallo (Roncjade)
               </Typography>
 
-              <DetectionsTable value={controlUnitData} />
+              <DetectionsTable value={roncjadeData?.data} />
             </CardContent>
           </Card>
         </Grid>
@@ -48,10 +70,10 @@ const Dashboard: FunctionComponent = () => {
           <Card>
             <CardContent>
               <Typography variant="h5" align="center" gutterBottom>
-                H4 - Piancavallo
+                PCIV - Val Sughet
               </Typography>
 
-              <DetectionsTable value={controlUnitData} />
+              <DetectionsTable value={valSughetData?.data} />
             </CardContent>
           </Card>
         </Grid>
@@ -60,10 +82,10 @@ const Dashboard: FunctionComponent = () => {
           <Card>
             <CardContent>
               <Typography variant="h5" align="center" gutterBottom>
-                H4 - Piancavallo
+                PCIV - Val dei Sass
               </Typography>
 
-              <DetectionsTable value={controlUnitData} />
+              <DetectionsTable value={valDeiSassData?.data} />
             </CardContent>
           </Card>
         </Grid>
