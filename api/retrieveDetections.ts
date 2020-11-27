@@ -1,18 +1,18 @@
-import { NowRequest, NowResponse } from '@vercel/node';
+import { FunctionHandler } from './models/function.model';
 
 import axios from 'axios';
 
-const retrieveDetections = async (
-  request: NowRequest,
-  response: NowResponse,
-): Promise<NowResponse> => {
+const retrieveDetections: FunctionHandler = async (request, response) => {
   try {
-    const res = await axios.get(
+    const {
+      data: { data },
+    } = await axios.get(
       'https://www.protezionecivile.fvg.it/it/api/drupal/stazione/99/detail/all',
     );
-    return response.status(200).send(res.data);
+
+    return response.status(200).send(data);
   } catch (error) {
-    return response.send(error);
+    return response.status(500).send(error);
   }
 };
 

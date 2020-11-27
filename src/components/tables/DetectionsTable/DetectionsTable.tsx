@@ -30,7 +30,7 @@ const DetectionsTable: FunctionComponent<DetectionsTableProps> = ({
 
       <tbody>
         {value.map(row => (
-          <tr>
+          <tr key={row.id}>
             <td>{row.tipo_sensore}</td>
             <td>
               {row.valore} {row.unita_misura}
