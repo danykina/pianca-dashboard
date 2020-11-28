@@ -24,7 +24,7 @@ const Router: FunctionComponent = () => {
             <Webcams />
           </Route>
 
-          <Redirect to="/home" />
+          <Redirect to="/dashboard" />
         </Switch>
       </NavigationLayout>
     </BrowserRouter>
