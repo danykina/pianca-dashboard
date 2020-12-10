@@ -9,6 +9,7 @@ import NavigationLayout from '../../../components/layouts/SidebarLayout/Navigati
 import SidebarMenu from '../../../components/menus/SidebarMenu/SidebarMenu';
 
 const Dashboard = loadable(() => import('../../Dashboard/Dashboard'));
+const Search = loadable(() => import('../../Search/Search'));
 const Webcams = loadable(() => import('../../Webcams/Webcams'));
 
 const Router: FunctionComponent = () => {
@@ -18,6 +19,10 @@ const Router: FunctionComponent = () => {
         <Switch>
           <Route path="/dashboard">
             <Dashboard />
+          </Route>
+
+          <Route path="/search">
+            <Search />
           </Route>
 
           <Route path="/webcams">
