@@ -4,29 +4,28 @@ import { Card, CardContent, Grid, Typography } from '@material-ui/core';
 
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import endpoints from '../../config/endpoints';
 
 import BaseLayout from '../../components/layouts/BaseLayout/BaseLayout';
 import DetectionsTable from '../../components/tables/DetectionsTable/DetectionsTable';
-
-const { REACT_APP_API_BASE_URL } = process.env;
 
 const Dashboard: FunctionComponent = () => {
   const { data: piancavalloData } = useQuery(
     'retrievePiancavalloDetections',
     () =>
-      axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+      axios.get(endpoints.api.retrieveDetections, {
         params: { controlUnitId: 99 },
       }),
   );
 
   const { data: roncjadeData } = useQuery('retrieveRoncjadeDetections', () =>
-    axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+    axios.get(endpoints.api.retrieveDetections, {
       params: { controlUnitId: 699 },
     }),
   );
 
   const { data: valSughetData } = useQuery('retrieveValSughetDetections', () =>
-    axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+    axios.get(endpoints.api.retrieveDetections, {
       params: { controlUnitId: 921 },
     }),
   );
@@ -34,7 +33,7 @@ const Dashboard: FunctionComponent = () => {
   const { data: valDeiSassData } = useQuery(
     'retrieveValDeiSassDetections',
     () =>
-      axios.get(`${REACT_APP_API_BASE_URL}/api/retrieveDetections`, {
+      axios.get(endpoints.api.retrieveDetections, {
         params: { controlUnitId: 920 },
       }),
   );
