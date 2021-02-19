@@ -2,41 +2,26 @@ import React, { FunctionComponent } from 'react';
 
 import { Card, CardContent, Grid, Typography } from '@material-ui/core';
 
-import axios from 'axios';
-import { useQuery } from 'react-query';
-import endpoints from '../../config/endpoints';
-
 import BaseLayout from '../../components/layouts/BaseLayout/BaseLayout';
 import DetectionsTable from '../../components/tables/DetectionsTable/DetectionsTable';
+import useDetections from '../../hooks/useDetections/useDetections';
 
 const Dashboard: FunctionComponent = () => {
-  const { data: piancavalloData } = useQuery(
-    'retrievePiancavalloDetections',
-    () =>
-      axios.get(endpoints.api.retrieveDetections, {
-        params: { controlUnitId: 99 },
-      }),
-  );
+  const { data: { data: piancavalloData } = {} } = useDetections({
+    controlUnitId: 99,
+  });
 
-  const { data: roncjadeData } = useQuery('retrieveRoncjadeDetections', () =>
-    axios.get(endpoints.api.retrieveDetections, {
-      params: { controlUnitId: 699 },
-    }),
-  );
+  const { data: { data: roncjadeData } = {} } = useDetections({
+    controlUnitId: 699,
+  });
 
-  const { data: valSughetData } = useQuery('retrieveValSughetDetections', () =>
-    axios.get(endpoints.api.retrieveDetections, {
-      params: { controlUnitId: 921 },
-    }),
-  );
+  const { data: { data: valSughetData } = {} } = useDetections({
+    controlUnitId: 921,
+  });
 
-  const { data: valDeiSassData } = useQuery(
-    'retrieveValDeiSassDetections',
-    () =>
-      axios.get(endpoints.api.retrieveDetections, {
-        params: { controlUnitId: 920 },
-      }),
-  );
+  const { data: { data: valDeiSassData } = {} } = useDetections({
+    controlUnitId: 920,
+  });
 
   return (
     <BaseLayout>
@@ -48,7 +33,7 @@ const Dashboard: FunctionComponent = () => {
                 H4 - Piancavallo
               </Typography>
 
-              <DetectionsTable value={piancavalloData?.data} />
+              <DetectionsTable value={piancavalloData} />
             </CardContent>
           </Card>
         </Grid>
@@ -60,7 +45,7 @@ const Dashboard: FunctionComponent = () => {
                 PCIV - Piancavallo (Roncjade)
               </Typography>
 
-              <DetectionsTable value={roncjadeData?.data} />
+              <DetectionsTable value={roncjadeData} />
             </CardContent>
           </Card>
         </Grid>
@@ -72,7 +57,7 @@ const Dashboard: FunctionComponent = () => {
                 PCIV - Val Sughet
               </Typography>
 
-              <DetectionsTable value={valSughetData?.data} />
+              <DetectionsTable value={valSughetData} />
             </CardContent>
           </Card>
         </Grid>
@@ -84,7 +69,7 @@ const Dashboard: FunctionComponent = () => {
                 PCIV - Val dei Sass
               </Typography>
 
-              <DetectionsTable value={valDeiSassData?.data} />
+              <DetectionsTable value={valDeiSassData} />
             </CardContent>
           </Card>
         </Grid>
