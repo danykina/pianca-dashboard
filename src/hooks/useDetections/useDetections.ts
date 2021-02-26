@@ -1,13 +1,18 @@
-import axios from 'axios';
-import { useQuery } from 'react-query';
+import useQuery from '../core/useQuery/useQuery';
+
 import endpoints from '../../config/endpoints';
+
 import { UseDetectionsHook } from './useDetections.model';
 
-const useDetections: UseDetectionsHook = ({ controlUnitId }) =>
-  useQuery(['useDetections', controlUnitId], () =>
-    axios.get(endpoints.api.retrieveDetections, {
-      params: { controlUnitId },
-    }),
+const useDetections: UseDetectionsHook = ({ controlUnitId }, options) =>
+  useQuery(
+    endpoints.api.retrieveDetections,
+    {
+      params: {
+        controlUnitId,
+      },
+    },
+    options,
   );
 
 export default useDetections;

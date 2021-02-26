@@ -1,7 +1,13 @@
-import { AxiosResponse } from 'axios';
-import { QueryResult } from 'react-query';
-import { Detection } from '../../models/controlUnit.model';
+import {
+  UseQueryOptions,
+  UseQueryResponse,
+} from '../core/useQuery/useQuery.model';
 
-export type UseDetectionsHook = (value: {
-  readonly controlUnitId: number;
-}) => QueryResult<AxiosResponse<readonly Detection[]>>;
+import { Detection } from '../../models/common.model';
+
+export type UseDetectionsHook = (
+  value: {
+    readonly controlUnitId: number;
+  },
+  options?: UseQueryOptions<readonly Detection[]>,
+) => UseQueryResponse<readonly Detection[]>;
