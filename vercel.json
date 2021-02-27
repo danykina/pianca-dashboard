@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/retrieveDetections/:controlUnitId",
+      "destination": "/api/retrieveDetections"
+    }
+  ]
+}

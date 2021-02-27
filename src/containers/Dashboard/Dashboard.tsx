@@ -7,21 +7,13 @@ import DetectionsTable from '../../components/tables/DetectionsTable/DetectionsT
 import useDetections from '../../hooks/useDetections/useDetections';
 
 const Dashboard: FunctionComponent = () => {
-  const { data: { data: piancavalloData } = {} } = useDetections({
-    controlUnitId: 99,
-  });
+  const { data: piancavalloData } = useDetections({ controlUnitId: 99 });
 
-  const { data: { data: roncjadeData } = {} } = useDetections({
-    controlUnitId: 699,
-  });
+  const { data: roncjadeData } = useDetections({ controlUnitId: 699 });
 
-  const { data: { data: valSughetData } = {} } = useDetections({
-    controlUnitId: 921,
-  });
+  const { data: valSughetData } = useDetections({ controlUnitId: 921 });
 
-  const { data: { data: valDeiSassData } = {} } = useDetections({
-    controlUnitId: 920,
-  });
+  const { data: valDeiSassData } = useDetections({ controlUnitId: 920 });
 
   return (
     <BaseLayout>

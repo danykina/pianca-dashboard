@@ -4,12 +4,8 @@ import axios from 'axios';
 
 const { CIVIL_PROTECTION_BASE_URL } = process.env;
 
-const retrieveDetections: FunctionHandler = async (request, response) => {
-  const {
-    controlUnitId,
-    sensorType = 'detail',
-    timestamp = 'all',
-  } = request.query;
+const retrieveDetections: FunctionHandler = async ({ query }, response) => {
+  const { controlUnitId, sensorType = 'detail', timestamp = 'all' } = query;
 
   try {
     const {

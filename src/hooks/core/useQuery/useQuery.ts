@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 import { useQuery as useReactQuery } from 'react-query';
 
@@ -9,9 +9,13 @@ const useQuery: UseQueryHook = <T>(
   config?: AxiosRequestConfig,
   options?: UseQueryOptions<T>,
 ) =>
-  useReactQuery<AxiosResponse<T>, Error>(
+  useReactQuery<T, Error>(
     ['query', url],
-    () => axios.get<T>(url, config),
+    async () => {
+      const { data } = await axios.get<T>(url, config);
+
+      return data;
+    },
     options,
   );
 

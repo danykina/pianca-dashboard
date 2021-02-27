@@ -6,12 +6,8 @@ import { UseDetectionsHook } from './useDetections.model';
 
 const useDetections: UseDetectionsHook = ({ controlUnitId }, options) =>
   useQuery(
-    endpoints.api.retrieveDetections,
-    {
-      params: {
-        controlUnitId,
-      },
-    },
+    `${endpoints.api.retrieveDetections}/${controlUnitId}`,
+    undefined,
     options,
   );
 

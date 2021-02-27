@@ -1,13 +1,13 @@
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 
 import {
   UseQueryOptions as UseReactQueryOptions,
   QueryObserverResult,
 } from 'react-query';
 
-export type UseQueryResponse<T> = QueryObserverResult<AxiosResponse<T>, Error>;
+export type UseQueryResponse<T> = QueryObserverResult<T, Error>;
 
-export type UseQueryOptions<T> = UseReactQueryOptions<AxiosResponse<T>, Error>;
+export type UseQueryOptions<T> = UseReactQueryOptions<T, Error>;
 
 export type UseQueryHook = <T>(
   url: string,
