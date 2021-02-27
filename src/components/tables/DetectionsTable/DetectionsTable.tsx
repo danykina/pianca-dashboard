@@ -2,9 +2,13 @@ import React, { FunctionComponent } from 'react';
 
 import { makeStyles } from '@material-ui/core';
 
+import { getFormattedDate } from '../../../helpers/formatters';
+
 import { DetectionsTableProps } from './DetectionsTable.model';
 
-const useStyles = makeStyles(theme => ({
+import TableLoader from '../../loaders/TableLoader/TableLoader';
+
+const useStyles = makeStyles(() => ({
   table: {
     width: '100%',
     '& > *': {
@@ -15,6 +19,7 @@ const useStyles = makeStyles(theme => ({
 
 const DetectionsTable: FunctionComponent<DetectionsTableProps> = ({
   value = [],
+  loading,
 }) => {
   const classes = useStyles();
 
@@ -29,15 +34,19 @@ const DetectionsTable: FunctionComponent<DetectionsTableProps> = ({
       </thead>
 
       <tbody>
-        {value.map(row => (
-          <tr key={row.id}>
-            <td>{row.tipo_sensore}</td>
-            <td>
-              {row.valore} {row.unita_misura}
-            </td>
-            <td>{row.max_date}</td>
-          </tr>
-        ))}
+        {loading ? (
+          <TableLoader columnsWidths={['100%', '100%', '100%']} />
+        ) : (
+          value.map(({ id, tipo_sensore, valore, unita_misura, max_date }) => (
+            <tr key={id}>
+              <td>{tipo_sensore}</td>
+              <td>
+                {valore} {unita_misura}
+              </td>
+              <td>{getFormattedDate(max_date)}</td>
+            </tr>
+          ))
+        )}
       </tbody>
     </table>
   );
