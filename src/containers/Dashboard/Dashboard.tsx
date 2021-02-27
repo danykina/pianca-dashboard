@@ -2,92 +2,55 @@ import React, { FunctionComponent } from 'react';
 
 import { Card, CardContent, Grid, Typography } from '@material-ui/core';
 
-import axios from 'axios';
-import { useQuery } from 'react-query';
-import endpoints from '../../config/endpoints';
-
 import BaseLayout from '../../components/layouts/BaseLayout/BaseLayout';
 import DetectionsTable from '../../components/tables/DetectionsTable/DetectionsTable';
+import useDetections from '../../hooks/useDetections/useDetections';
 
 const Dashboard: FunctionComponent = () => {
-  const { data: piancavalloData } = useQuery(
-    'retrievePiancavalloDetections',
-    () =>
-      axios.get(endpoints.api.retrieveDetections, {
-        params: { controlUnitId: 99 },
-      }),
-  );
+  const piancavalloData = useDetections({ controlUnitId: 99 });
+  const roncjadeData = useDetections({ controlUnitId: 699 });
+  const valSughetData = useDetections({ controlUnitId: 921 });
+  const valDeiSassData = useDetections({ controlUnitId: 920 });
 
-  const { data: roncjadeData } = useQuery('retrieveRoncjadeDetections', () =>
-    axios.get(endpoints.api.retrieveDetections, {
-      params: { controlUnitId: 699 },
-    }),
-  );
-
-  const { data: valSughetData } = useQuery('retrieveValSughetDetections', () =>
-    axios.get(endpoints.api.retrieveDetections, {
-      params: { controlUnitId: 921 },
-    }),
-  );
-
-  const { data: valDeiSassData } = useQuery(
-    'retrieveValDeiSassDetections',
-    () =>
-      axios.get(endpoints.api.retrieveDetections, {
-        params: { controlUnitId: 920 },
-      }),
-  );
+  const initCards = [
+    {
+      title: 'H4 - Piancavallo',
+      data: piancavalloData.data,
+      loading: piancavalloData.isLoading,
+    },
+    {
+      title: 'PCIV - Piancavallo (Roncjade)',
+      data: roncjadeData.data,
+      loading: roncjadeData.isLoading,
+    },
+    {
+      title: 'CIV - Val Sughet',
+      data: valSughetData.data,
+      loading: valSughetData.isLoading,
+    },
+    {
+      title: 'PCIV - Val dei Sass',
+      data: valDeiSassData.data,
+      loading: valDeiSassData.isLoading,
+    },
+  ];
 
   return (
     <BaseLayout>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" align="center" gutterBottom>
-                H4 - Piancavallo
-              </Typography>
+        {initCards.map(({ title, data, loading }) => (
+          <Grid item xs={12} sm={12} md={6} lg={3} key={title}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5" align="center" gutterBottom>
+                  {title}
+                </Typography>
 
-              <DetectionsTable value={piancavalloData?.data} />
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" align="center" gutterBottom>
-                PCIV - Piancavallo (Roncjade)
-              </Typography>
-
-              <DetectionsTable value={roncjadeData?.data} />
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" align="center" gutterBottom>
-                PCIV - Val Sughet
-              </Typography>
-
-              <DetectionsTable value={valSughetData?.data} />
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" align="center" gutterBottom>
-                PCIV - Val dei Sass
-              </Typography>
-
-              <DetectionsTable value={valDeiSassData?.data} />
-            </CardContent>
-          </Card>
-        </Grid>
+                <DetectionsTable value={data} loading={loading} />
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     </BaseLayout>
   );

@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 
 import theme from '../../../config/theme';
@@ -14,16 +16,20 @@ import enLocale from 'date-fns/locale/en-US';
 import Router from '../Router/Router';
 
 const Root: FunctionComponent = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider hideIconVariant>
-        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={enLocale}>
-          <CssBaseline />
+  const queryClient = new QueryClient();
 
-          <Router />
-        </MuiPickersUtilsProvider>
-      </SnackbarProvider>
-    </ThemeProvider>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider hideIconVariant>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={enLocale}>
+            <CssBaseline />
+
+            <Router />
+          </MuiPickersUtilsProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 
