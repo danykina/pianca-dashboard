@@ -5,7 +5,7 @@
       "destination": "/api/retrieveDetections"
     },
     {
-      "source": "/axis-cgi/mjpg/video.cgi",
+      "source": "/nevelandia-webcam-streaming",
       "destination": "http://46.19.234.136/axis-cgi/mjpg/video.cgi"
     }
   ]
