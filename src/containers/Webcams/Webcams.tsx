@@ -13,7 +13,7 @@ const Webcams: FunctionComponent = () => {
         <Grid item xs={12} sm={12} md={12} lg={6}>
           <AxisWebcam
             cardHeader={{ title: 'Nevelandia' }}
-            src="http://46.19.234.136/axis-cgi/mjpg/video.cgi"
+            src="/nevelandia-webcam-streaming"
             alt="Webcam Nevelandia"
           />
         </Grid>
